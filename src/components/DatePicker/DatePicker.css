@@ -1,0 +1,137 @@
+.datepicker-container {
+  position: relative;
+  width: 100%;
+}
+
+.datepicker-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.datepicker-input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 1.5;
+  transition: border-color 0.2s ease-in-out;
+}
+
+.datepicker-input:focus {
+  outline: none;
+  border-color: #1976d2;
+}
+
+.datepicker-input.error {
+  border-color: #d32f2f;
+}
+
+.calendar-toggle {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+}
+
+.calendar-toggle:hover {
+  opacity: 0.8;
+}
+
+.datepicker-error {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.calendar-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 280px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 4px;
+  z-index: 1000;
+  padding: 8px;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 8px;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #666;
+}
+
+.calendar-header button:hover {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.calendar-header span {
+  font-weight: bold;
+  color: #333;
+}
+
+.calendar {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.calendar th {
+  padding: 8px;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  font-weight: normal;
+}
+
+.calendar td {
+  padding: 2px;
+  text-align: center;
+}
+
+.calendar-day {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  color: #333;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-day:hover {
+  background-color: #f5f5f5;
+}
+
+.calendar-day.selected {
+  background-color: #1976d2;
+  color: white;
+}
+
+.calendar-day.selected:hover {
+  background-color: #1565c0;
+}

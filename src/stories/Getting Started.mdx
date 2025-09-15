@@ -1,0 +1,149 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting Started" />
+
+# Component Library - Getting Started
+
+Welcome to our Component Library! This is a comprehensive collection of React components designed for building consistent and modular applications using Module Federation.
+
+## Table of Contents
+
+- [Overview](#overview)
+- [Project Structure](#project-structure)
+- [Using Components](#using-components)
+- [Development Guide](#development-guide)
+- [Module Federation](#module-federation)
+
+## Overview
+
+Our component library serves as a centralized collection of reusable React components. It's built with:
+
+- React + TypeScript
+- Module Federation for remote component sharing
+- CSS Modules with SASS support
+- Storybook for component documentation
+
+<br />
+
+## Project Structure
+
+The project is organized into several key directories:
+
+```
+storybook-demo/
+├── src/
+│   ├── components/          # Component implementation files
+│   │   ├── Button/
+│   │   ├── Card/
+│   │   ├── Checkbox/
+│   │   ├── DatePicker/
+│   │   └── ...
+│   └── stories/
+│       └── components/      # Storybook documentation
+├── .storybook/             # Storybook configuration
+└── webpack.config.js       # Module Federation setup
+```
+
+## Using Components
+
+### Local Development
+To run the component library locally:
+
+```bash
+# Install dependencies
+npm install
+
+# Start Storybook
+npm run storybook
+
+# Build for production
+npm run build
+
+# Serve built files
+npm run serve
+```
+
+### Remote Usage
+Components are exposed through Module Federation. To use them in another application:
+
+```javascript
+// Remote app webpack config
+{
+  plugins: [
+    new ModuleFederationPlugin({
+      name: 'host',
+      remotes: {
+        componentLib: 'componentLib@http://localhost:3003/remoteEntry.js',
+      },
+    }),
+  ]
+}
+
+// Usage in components
+import { Button } from 'componentLib/Button';
+import { Checkbox } from 'componentLib/Checkbox';
+```
+
+<br />
+## Development Guide
+
+### Adding New Components
+
+1. Create component directory in `src/components/[ComponentName]/`
+2. Add implementation files:
+   - `[ComponentName].tsx`
+   - `[ComponentName].css`
+3. Create story in `src/stories/components/[componentName]/`
+   - `[ComponentName].stories.tsx`
+4. Add to webpack.config.js exports if needed
+
+### Code Standards
+
+- Use TypeScript for type safety
+- Follow React functional component patterns
+- Include prop types and documentation
+- Add comprehensive stories for each component
+- Use CSS Modules for styling
+
+### Available Components
+
+Our library includes the following components:
+- Button
+- Card
+- Checkbox
+- DatePicker
+- ExpansionPanel
+- Loader
+- ProgressSpinner
+- RadioButton
+- Select
+- Tabs
+- Tooltip
+
+## Module Federation
+
+Components are exposed through Module Federation on port 3003. The webpack configuration includes:
+
+- Shared dependencies management
+- Component exposures
+- Style handling for CSS/SASS
+
+### Exposed Components
+
+Access components through the remote entry:
+```javascript
+componentLib: 'componentLib@http://localhost:3003/remoteEntry.js'
+```
+
+Each component is individually exposed:
+```javascript
+exposes: {
+  './Button': './src/components/Button/Button',
+  './Card': './src/components/Card/Card',
+  // ... other components
+}
+```
+
+---
+
+For more detailed information about specific components, please navigate to their individual documentation in the sidebar.

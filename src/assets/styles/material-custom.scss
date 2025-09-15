@@ -1,0 +1,9 @@
+@use './material/typography';
+@use './material/button';
+@use './material/checkbox';
+
+html {
+  @include typography.styles();
+  @include button.styles();
+  @include checkbox.styles();
+}

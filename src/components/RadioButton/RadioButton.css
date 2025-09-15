@@ -1,0 +1,115 @@
+.e-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  min-width: 200px;
+}
+
+.e-radio-group__label {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.87);
+  margin-bottom: 4px;
+}
+
+.e-radio-group__options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.e-radio {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  padding: 4px;
+}
+
+.e-radio__input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.e-radio__button {
+  position: relative;
+  height: 20px;
+  width: 20px;
+  border: 2px solid #757575;
+  border-radius: 50%;
+  margin-right: 8px;
+  transition: all 0.2s ease-in-out;
+}
+
+.e-radio__button::after {
+  content: "";
+  position: absolute;
+  display: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.e-radio__input:checked ~ .e-radio__button {
+  border-color: transparent;
+}
+
+.e-radio__input:checked ~ .e-radio__button::after {
+  display: block;
+}
+
+/* Primary variant */
+.e-radio--primary .e-radio__input:checked ~ .e-radio__button {
+  background-color: #1976d2;
+  border-color: #1976d2;
+}
+
+.e-radio--primary .e-radio__input:checked ~ .e-radio__button::after {
+  background-color: white;
+}
+
+.e-radio--primary:hover .e-radio__input:not(:disabled) ~ .e-radio__button {
+  border-color: #1976d2;
+}
+
+/* Secondary variant */
+.e-radio--secondary .e-radio__input:checked ~ .e-radio__button {
+  background-color: #dc004e;
+  border-color: #dc004e;
+}
+
+.e-radio--secondary .e-radio__input:checked ~ .e-radio__button::after {
+  background-color: white;
+}
+
+.e-radio--secondary:hover .e-radio__input:not(:disabled) ~ .e-radio__button {
+  border-color: #dc004e;
+}
+
+/* Disabled state */
+.e-radio-group--disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.e-radio-group--disabled .e-radio {
+  cursor: not-allowed;
+}
+
+.e-radio__input:disabled ~ .e-radio__button {
+  background-color: #e0e0e0;
+  border-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.e-radio__input:disabled ~ .e-radio__label {
+  color: #757575;
+  cursor: not-allowed;
+}

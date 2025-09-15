@@ -1,0 +1,33 @@
+.e-app {
+    padding: 20px;
+
+    p {
+        font-size: 14px;
+    }
+
+    code {
+        background-color: lightgoldenrodyellow;
+        padding: 2px 4px;
+        font-size: 13px;
+    }
+
+    h3 {
+        font-size: 1.125rem;
+        line-height: 24px;
+        font-weight: 500;
+        margin: 40px 0 10px;
+    }
+
+    .content {
+        border: 1px dashed #bbb;
+        margin-bottom: 20px;
+        padding: 20px;
+        line-height: 21px;
+        width: 600px;
+    }
+
+    .body-text {
+        font-size: 14px;
+        line-height: 20px;
+    }
+}

@@ -1,0 +1,55 @@
+.progress-spinner-container {
+  display: inline-flex;
+  position: relative;
+}
+
+.progress-spinner {
+  transition: transform 0.3s ease-in-out;
+}
+
+.progress-spinner-circle-bg {
+  stroke: rgba(0, 0, 0, 0.12);
+}
+
+/* Color variants */
+.progress-spinner-primary .progress-spinner-circle {
+  stroke: #1976d2;
+}
+
+.progress-spinner-accent .progress-spinner-circle {
+  stroke: #ff4081;
+}
+
+.progress-spinner-warn .progress-spinner-circle {
+  stroke: #f44336;
+}
+
+/* Indeterminate animation */
+.spinner-animation {
+  animation: rotate 2s linear infinite;
+}
+
+.spinner-animation .progress-spinner-circle {
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dasharray: 1, 200;
+    stroke-dashoffset: 0;
+  }
+  50% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -35;
+  }
+  100% {
+    stroke-dasharray: 89, 200;
+    stroke-dashoffset: -124;
+  }
+}

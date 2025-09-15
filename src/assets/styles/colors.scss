@@ -1,0 +1,74 @@
+@use 'sass:map';
+
+$brand_colors: (
+  primary: (
+    'slate': #34657f,
+    'blue': #00aed9,
+    'orange': #ff9e1b,
+    'orange-1': #ff6a13,
+    'boysenberry': #a83d72,
+  ),
+
+  secondary: (
+    'green': #008578,
+    'green-1': #43b02a,
+    'blue-2': #1e22aa,
+    'purple': #653279,
+    'purple-1': #685bc7,
+    'boysenberry-1': #aa0061,
+    'pink': #e24585,
+    'yellow': #ffc41b,
+    'teal': #007e9e,
+    'error': #ba1a1a,
+    'success': #43b02a,
+    'warning': #ff9e1b,
+    'info': #00aed9,
+  ),
+
+  grayscale: (
+    0: #fff,
+    10: #e5e5e5,
+    20: #cccccc,
+    30: #b2b2b2,
+    40: #999999,
+    50: #7f7f7f,
+    60: #666666,
+    70: #4c4c4c,
+    80: #333333,
+    90: #191919,
+    100: #000,
+  ),
+);
+
+@function clr($color-group, $name) {
+  @return map.get($brand_colors, $color-group, $name);
+}
+
+:root {
+  --color-slate: #{clr(primary, 'slate')};
+  --color-blue: #{clr(primary, 'blue')};
+  --color-orange: #{clr(primary, 'orange')};
+  --color-orange-1: #{clr(primary, 'orange-1')};
+  --color-boysenberry: #{clr(primary, 'boysenberry')};
+  --color-green: #{clr(secondary, 'green')};
+  --color-green-1: #{clr(secondary, 'green-1')};
+  --color-blue-2: #{clr(secondary, 'blue-2')};
+  --color-purple: #{clr(secondary, 'purple')};
+  --color-purple-1: #{clr(secondary, 'purple-1')};
+  --color-boysenberry-1: #{clr(secondary, 'boysenberry-1')};
+  --color-pink: #{clr(secondary, 'pink')};
+  --color-yellow: #{clr(secondary, 'yellow')};
+  --color-teal: #{clr(secondary, 'teal')};
+  --color-error: #{clr(secondary, 'error')};
+  --color-white: #{clr(grayscale, 0)};
+  --color-gray-10: #{clr(grayscale, 10)};
+  --color-gray-20: #{clr(grayscale, 20)};
+  --color-gray-30: #{clr(grayscale, 30)};
+  --color-gray-40: #{clr(grayscale, 40)};
+  --color-gray-50: #{clr(grayscale, 50)};
+  --color-gray-60: #{clr(grayscale, 60)};
+  --color-gray-70: #{clr(grayscale, 70)};
+  --color-gray-80: #{clr(grayscale, 80)};
+  --color-gray-90: #{clr(grayscale, 90)};
+  --color-black: #{clr(grayscale, 100)};
+}

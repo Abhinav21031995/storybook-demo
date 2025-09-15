@@ -1,0 +1,17 @@
+@use 'sass:math';
+
+@mixin font-size($size) {
+  @if (math.unit($size) == px) {
+    font-size: math.div($size, 16px) * 1rem;
+  } @else if (math.unit($size) == rem) {
+    font-size: $size;
+  } @else {
+    @error 'Invalid unit for font-size. Please use px or rem.';
+  }
+}
+
+@mixin font-config($font-size, $line-height: 1.2, $font-weight: 400) {
+  @include font-size($font-size);
+  line-height: $line-height;
+  font-weight: $font-weight;
+}

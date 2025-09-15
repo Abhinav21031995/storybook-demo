@@ -1,0 +1,58 @@
+.chipset-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 4px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background-color: #f5f5f5;
+  border-radius: 16px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.87);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  user-select: none;
+}
+
+.chip.selected {
+  background-color: #e0e0e0;
+}
+
+.chip:hover {
+  background-color: #e0e0e0;
+}
+
+.chip.removable {
+  padding-right: 4px;
+}
+
+.chip-remove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  border: none;
+  background-color: transparent;
+  color: #666;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  line-height: 1;
+  padding: 0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.chip-remove:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.chip-remove:focus {
+  outline: none;
+  background-color: rgba(0, 0, 0, 0.2);
+}

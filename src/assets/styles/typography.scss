@@ -1,0 +1,48 @@
+@use 'colors';
+@use 'common-mixins' as *;
+
+@import url('https://use.typekit.net/wdy6qpl.css');
+
+html {
+  font-family: 'Proxima Nova', calibri, sans-serif;
+  letter-spacing: normal;
+}
+
+body {
+  font-family: inherit;
+  letter-spacing: normal;
+
+  a {
+    color: var(--color-blue-2);
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  h1 {
+    @include font-config(24px, 30px, 700);
+    margin: 0 0 20px;
+  }
+
+  h2 {
+    @include font-config(20px, 26px, 600);
+    margin: 0 0 20px;
+  }
+
+  h3 {
+    @include font-config(18px, 24px, 500);
+    margin: 0 0 20px;
+  }
+
+  h4 {
+    @include font-config(16px, 20px, 500);
+    margin: 0 0 20px;
+  }
+
+  h5 {
+    @include font-config(16px, 20px, 400);
+    margin: 0 0 20px;
+  }
+}

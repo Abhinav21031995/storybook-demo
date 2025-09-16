@@ -74,6 +74,58 @@ npm install react@^18.2.0 react-dom@^18.2.0 --save-peer
 # Should start Storybook development server
 npm run storybook
 
+## Project Overview
+
+Our component library is built with:
+
+- React + TypeScript for type-safe development
+- Module Federation for micro-frontend architecture
+- CSS Modules with SASS for scoped styling
+- Storybook for interactive documentation
+- Comprehensive theming system with CSS variables
+- Webpack 5 for modern build optimization
+
+### Project Structure
+
+```
+storybook-demo/
+├── src/
+│   ├── components/          # Component implementation files
+│   │   ├── Button/
+│   │   ├── Card/
+│   │   ├── Checkbox/
+│   │   ├── DatePicker/
+│   │   └── ...
+│   └── stories/            # Storybook documentation
+│       └── components/     
+├── .storybook/            # Storybook configuration
+└── webpack.config.js      # Module Federation setup
+```
+
+### Styling System
+
+Our library implements a comprehensive styling system:
+
+```scss
+// Color System using CSS variables
+:root {
+  --color-primary: #00aed9;
+  --color-secondary: #1e22aa;
+  --color-warning: #ff9e1b;
+  --color-error: #ba1a1a;
+  --color-success: #43b02a;
+}
+
+// Typography System
+html {
+  font-family: 'Proxima Nova', calibri, sans-serif;
+}
+
+h1 { font-size: 24px; line-height: 30px; }
+h2 { font-size: 20px; line-height: 26px; }
+h3 { font-size: 18px; line-height: 24px; }
+```
+
 ## Available Components
 
 Our component library includes the following reusable components:
@@ -245,10 +297,37 @@ jobs:
 
 ## Contributing
 
-1. Create a new branch
-2. Add or update stories
-3. Test your changes
-4. Submit a pull request
+### Adding New Components
+
+1. Create component directory:
+   ```bash
+   src/components/[ComponentName]/
+   ```
+
+2. Add implementation files:
+   - `[ComponentName].tsx` - Component implementation
+   - `[ComponentName].css` - Scoped styles
+   - `[ComponentName].stories.tsx` - Storybook documentation
+
+3. Development Guidelines:
+   - Use TypeScript for type safety
+   - Implement CSS modules for styling
+   - Add comprehensive props documentation
+   - Include usage examples in stories
+
+4. Testing & Review:
+   - Write unit tests
+   - Test in Storybook
+   - Create pull request
+   - Address review feedback
+
+### Code Standards
+
+- Use TypeScript for all new components
+- Follow established naming conventions
+- Maintain comprehensive documentation
+- Ensure accessibility compliance
+- Add proper type definitions
 
 ## Scripts
 

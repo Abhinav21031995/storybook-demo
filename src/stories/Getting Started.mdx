@@ -10,18 +10,22 @@ Welcome to our Component Library! This is a comprehensive collection of React co
 
 - [Overview](#overview)
 - [Project Structure](#project-structure)
-- [Using Components](#using-components)
-- [Development Guide](#development-guide)
+- [Component Setup](#component-setup)
 - [Module Federation](#module-federation)
+- [Styling System](#styling-system)
+- [Development Guide](#development-guide)
+- [Remote App Integration](#remote-app-integration)
 
 ## Overview
 
 Our component library serves as a centralized collection of reusable React components. It's built with:
 
-- React + TypeScript
-- Module Federation for remote component sharing
-- CSS Modules with SASS support
-- Storybook for component documentation
+- React + TypeScript for type-safe development
+- Module Federation for micro-frontend architecture
+- CSS Modules with SASS for scoped styling
+- Storybook for interactive documentation
+- Comprehensive theming system with CSS variables
+- Webpack 5 for modern build optimization
 
 <br />
 
@@ -63,25 +67,73 @@ npm run build
 npm run serve
 ```
 
-### Remote Usage
-Components are exposed through Module Federation. To use them in another application:
+## Module Federation
+
+### Component Library Setup
+Our webpack configuration exposes components:
 
 ```javascript
-// Remote app webpack config
-{
-  plugins: [
-    new ModuleFederationPlugin({
-      name: 'host',
-      remotes: {
-        componentLib: 'componentLib@http://localhost:3003/remoteEntry.js',
-      },
-    }),
-  ]
-}
+// webpack.config.js
+new ModuleFederationPlugin({
+  name: 'componentLib',
+  filename: 'remoteEntry.js',
+  exposes: {
+    './Button': './src/components/Button/Button',
+    './Card': './src/components/Card/Card',
+    './Checkbox': './src/components/Checkbox/Checkbox',
+    './DatePicker': './src/components/DatePicker/DatePicker',
+    './ExpansionPanel': './src/components/ExpansionPanel/ExpansionPanel',
+    './Loader': './src/components/Loader/Loader',
+    './ProgressSpinner': './src/components/progress-spinner/progress-spinner',
+    './RadioButton': './src/components/RadioButton/RadioButton',
+    './Select': './src/components/Select/Select',
+    './Tabs': './src/components/Tabs/Tabs',
+    './Tooltip': './src/components/Tooltip/Tooltip'
+  },
+  shared: {
+    react: { singleton: true, eager: false },
+    'react-dom': { singleton: true, eager: false }
+  }
+})
+```
 
-// Usage in components
+### Remote App Integration
+To use components in your application:
+
+1. Configure webpack in your remote app:
+```javascript
+// Remote app webpack.config.js
+new ModuleFederationPlugin({
+  name: 'host',
+  remotes: {
+    componentLib: 'componentLib@http://localhost:3003/remoteEntry.js',
+  },
+})
+```
+
+2. Import and use components:
+```javascript
+// In your components
 import { Button } from 'componentLib/Button';
-import { Checkbox } from 'componentLib/Checkbox';
+import { Select } from 'componentLib/Select';
+
+function MyComponent() {
+  return (
+    <div>
+      <Button label="Click Me" variant="primary" />
+      <Select 
+        options={['Option 1', 'Option 2']} 
+        onChange={(value) => console.log(value)} 
+      />
+    </div>
+  );
+}
+```
+
+3. Import styles (if needed):
+```javascript
+// In your app's entry point
+import 'componentLib/master-global-styles';
 ```
 
 <br />
@@ -98,6 +150,52 @@ import { Checkbox } from 'componentLib/Checkbox';
 4. Add to webpack.config.js exports if needed
 
 ### Code Standards
+
+## Styling System
+
+Our library implements a comprehensive styling system:
+
+### Color System
+```scss
+// Access colors using CSS variables
+:root {
+  --color-primary: #00aed9;
+  --color-secondary: #1e22aa;
+  --color-warning: #ff9e1b;
+  --color-error: #ba1a1a;
+  --color-success: #43b02a;
+}
+```
+
+### Typography
+We use a modular typography system with consistent spacing:
+```scss
+// Font configurations
+html {
+  font-family: 'Proxima Nova', calibri, sans-serif;
+}
+
+// Heading styles
+h1 { font-size: 24px; line-height: 30px; }
+h2 { font-size: 20px; line-height: 26px; }
+h3 { font-size: 18px; line-height: 24px; }
+```
+
+### CSS Modules
+Each component uses CSS modules for scoped styling:
+```tsx
+import styles from './Component.module.scss';
+
+<div className={styles.container}>
+  <button className={styles.button}>Click me</button>
+</div>
+```
+
+### Global Styles
+Import global styles in your application:
+```tsx
+import 'componentLib/master-global-styles';
+```
 
 - Use TypeScript for type safety
 - Follow React functional component patterns
